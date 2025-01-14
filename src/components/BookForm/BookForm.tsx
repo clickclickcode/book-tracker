@@ -2,6 +2,8 @@
 
 import { useState } from 'react'
 import { Book } from '@/types/book.types'
+import { bookFormSchema, type BookFormData } from '@/schemas/validationSchemas'
+import { zodResolver } from '@/hookform/resolver/zod'
 
 interface BookFormProps {
     onSubmit: (book: Omit<Book, 'id' | 'status'>) => void
