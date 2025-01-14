@@ -1,3 +1,7 @@
+'use client'
+
+import { useEffect } from 'react'
+
 interface ModalProps {
     isOpen: boolean;
     onClose: () => void;
@@ -7,6 +11,18 @@ interface ModalProps {
 
 
 export const Modal = ({ isOpen, onClose, children, title }: ModalProps) => {
+    useEffect(() => {
+        if (isOpen) {
+            document.body.style.overflow = 'hidden'
+        } else {
+            document.body.style.overflow = 'unset'
+        }
+
+        return () => {
+            document.body.style.overflow = 'unset'
+        }
+    }, [isOpen])
+
     if (!isOpen) return null
 
     return (
